@@ -12,11 +12,16 @@ class Client(Elasticsearch):
         self.timeout = timeout
         self.doc_type = doc_type
 
-        self._client = None
+        self._client = Elasticsearch(self.url, timeout=self.timeout)
 
     def connect(self):
         assert self._client is None, "Elasticsearch is already running"
         self._client = Elasticsearch(self.url, timeout=self.timeout)
+
+    def disconnect(self):
+        assert self._client is not None, "Elasticsearch is not running"
+        self.close()
+        self._client = None
 
     def query(self, index, body, scroll="5m", size=1000):
         assert self._client is not None, "Connection is not acquired"
