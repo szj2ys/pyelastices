@@ -11,7 +11,7 @@ examples
 *demo.py
 *test.py
 test*
-
+test/
 *.log
 
 

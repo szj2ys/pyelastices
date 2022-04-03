@@ -15,7 +15,7 @@ class Client(Elasticsearch):
         self._client = Elasticsearch(self.url, timeout=self.timeout)
 
     def connect(self):
-        assert self._client is None, "Elasticsearch is already running"
+        # assert self._client is None, "Elasticsearch is already running"
         self._client = Elasticsearch(self.url, timeout=self.timeout)
 
     def disconnect(self):
